@@ -3,38 +3,48 @@
 @section('title', 'Portfolio Project - Abiyyu Ardilian')
 
 @section('content')
-    <!-- Portfolio Section -->
-    <section id="portfolio">
-        <h2 class="section-title">Portfolio Project</h2>
-        <div class="portfolio-grid">
-            @forelse($projects as $project)
-            <div class="portfolio-card fade-in">
-                <div class="portfolio-image">
-                    @if($project->image)
-                    <img src="{{ asset($project->image) }}" alt="{{ $project->title }}">
-                    @endif
-                    <div class="portfolio-overlay">
-                        @if($project->link)
-                        <a href="{{ $project->link }}" target="_blank"><i class="fas fa-external-link-alt"></i></a>
-                        @else
-                        <i class="fas fa-external-link-alt"></i>
-                        @endif
-                    </div>
-                </div>
-                <div class="portfolio-content">
-                    <h3>{{ $project->title }}</h3>
+<div class="page-shell">
+    <div class="page-heading">
+        <div>
+            <div class="page-kicker">Portfolio</div>
+            <h1>Project Pilihan</h1>
+        </div>
+        <p>Kumpulan pekerjaan web dan sistem yang menampilkan proses, teknologi, serta hasil implementasi.</p>
+    </div>
+
+    <div class="work-grid">
+        @forelse($projects as $project)
+        <article class="work-card">
+            <div class="work-media">
+                @if($project->image)
+                <img src="{{ asset($project->image) }}" alt="{{ $project->title }}">
+                @else
+                <div class="work-placeholder"><i class="fas fa-image"></i></div>
+                @endif
+            </div>
+            <div class="work-info">
+                <div>
+                    <h2>{{ $project->title }}</h2>
                     <p>{{ $project->description }}</p>
                     <div class="portfolio-tags">
-                        @php $tags = explode(',', $project->tags); @endphp
+                        @php $tags = explode(',', $project->tags ?? ''); @endphp
                         @foreach($tags as $tag)
-                        <span class="tag">{{ trim($tag) }}</span>
+                            @if(trim($tag) !== '')
+                            <span class="tag">{{ trim($tag) }}</span>
+                            @endif
                         @endforeach
                     </div>
                 </div>
+                @if($project->link)
+                <a href="{{ $project->link }}" target="_blank" class="work-link" aria-label="Open project">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                </a>
+                @endif
             </div>
-            @empty
-            <p>Belum ada proyek portfolio.</p>
-            @endforelse
-        </div>
-    </section>
+        </article>
+        @empty
+        <p>Belum ada proyek portfolio.</p>
+        @endforelse
+    </div>
+</div>
 @endsection

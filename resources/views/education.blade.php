@@ -3,26 +3,39 @@
 @section('title', 'Pendidikan - Abiyyu Ardilian')
 
 @section('content')
-    <!-- Education Section -->
-    <section id="education">
-        <h2 class="section-title">Pendidikan</h2>
+<div class="page-shell">
+    <div class="page-heading">
+        <div>
+            <div class="page-kicker">Education</div>
+            <h1>Pendidikan</h1>
+        </div>
+        <p>Riwayat pendidikan, fokus pembelajaran, dan pencapaian yang mendukung perjalanan profesional saya.</p>
+    </div>
+
+    <div class="record-list">
         @forelse($educations as $edu)
-        <div class="education-item fade-in">
-            <h3>{{ $edu->institution }}</h3>
-            <div class="meta"><i class="fas fa-graduation-cap"></i> {{ $edu->degree }} | {{ $edu->period }}</div>
-            <ul>
+        <article class="record-row">
+            <div class="record-icon"><i class="fas fa-graduation-cap"></i></div>
+            <div>
+                <h3>{{ $edu->institution }}</h3>
+                <p>{{ $edu->degree }} · {{ $edu->period }}</p>
+            </div>
+            <ul class="clean-list">
                 @php $ach = json_decode($edu->achievements); @endphp
                 @if(is_array($ach))
                     @foreach($ach as $item)
                     <li><i class="fas fa-star"></i> {{ $item }}</li>
                     @endforeach
-                @else
+                @elseif($edu->achievements)
                     <li><i class="fas fa-star"></i> {{ $edu->achievements }}</li>
+                @else
+                    <li><i class="fas fa-star"></i> Data pencapaian belum ditambahkan.</li>
                 @endif
             </ul>
-        </div>
+        </article>
         @empty
         <p>Belum ada data pendidikan.</p>
         @endforelse
-    </section>
+    </div>
+</div>
 @endsection

@@ -1,75 +1,96 @@
 @extends('layouts.admin')
 
-@section('header', 'Edit Profile')
+@section('header', 'Profile')
 
 @section('content')
 <div class="section-header">
     <div>
         <h1>Profile</h1>
-        <p>Perbarui identitas utama, bio, dan link sosial portfolio.</p>
+        <p>Lihat identitas utama, bio, dan link sosial portfolio.</p>
     </div>
-</div>
-
-<div class="card form-panel">
     @if($profile)
-    <form action="{{ route('profile.update', $profile->id) }}" method="POST">
-        @csrf
-        @method('PUT')
-        <div class="form-grid">
-            <div class="form-group">
-                <label>Full Name</label>
-                <input type="text" name="name" value="{{ old('name', $profile->name) }}" required>
-            </div>
-            <div class="form-group">
-                <label>Role / Tagline</label>
-                <input type="text" name="role" value="{{ old('role', $profile->role) }}" required>
-            </div>
-        </div>
-        <div class="form-group">
-            <label>Bio</label>
-            <textarea name="bio" rows="5" required>{{ old('bio', $profile->bio) }}</textarea>
-        </div>
-        <div class="form-grid">
-            <div class="form-group">
-                <label>Phone</label>
-                <input type="text" name="phone" value="{{ old('phone', $profile->phone) }}">
-            </div>
-            <div class="form-group">
-                <label>WhatsApp</label>
-                <input type="text" name="whatsapp" value="{{ old('whatsapp', $profile->whatsapp) }}">
-            </div>
-        </div>
-        <div class="form-grid">
-            <div class="form-group">
-                <label>Email</label>
-                <input type="email" name="email" value="{{ old('email', $profile->email) }}">
-            </div>
-            <div class="form-group">
-                <label>Location</label>
-                <input type="text" name="location" value="{{ old('location', $profile->location) }}">
-            </div>
-        </div>
-        <div class="form-grid">
-            <div class="form-group">
-                <label>GitHub Link</label>
-                <input type="text" name="github" value="{{ old('github', $profile->github) }}">
-            </div>
-            <div class="form-group">
-                <label>LinkedIn Link</label>
-                <input type="text" name="linkedin" value="{{ old('linkedin', $profile->linkedin) }}">
-            </div>
-        </div>
-        <div class="form-group">
-            <label>Instagram Link</label>
-            <input type="text" name="instagram" value="{{ old('instagram', $profile->instagram) }}">
-        </div>
-
-        <div class="button-row">
-            <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i> Update Profile</button>
-        </div>
-    </form>
+        <a href="{{ route('profile.edit', $profile->id) }}" class="btn btn-primary"><i class="fas fa-pen"></i> Edit Profile</a>
     @else
-    <div class="empty-state">Profile not found. Please run seeder.</div>
+        <a href="{{ route('profile.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Add Profile</a>
     @endif
 </div>
+
+@if($profile)
+<div class="card">
+    <div class="card-header">
+        <div>
+            <h3>{{ $profile->name }}</h3>
+            <p class="card-subtitle">{{ $profile->role }}</p>
+        </div>
+    </div>
+
+    <div class="profile-detail-layout">
+        <div class="table-wrap">
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Bio</th>
+                        <td>{!! $profile->bio !!}</td>
+                    </tr>
+                    <tr>
+                        <th>Phone</th>
+                        <td>{{ $profile->phone ?: '-' }}</td>
+                    </tr>
+                    <tr>
+                        <th>WhatsApp</th>
+                        <td>{{ $profile->whatsapp ?: '-' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>{{ $profile->email ?: '-' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Location</th>
+                        <td>{{ $profile->location ?: '-' }}</td>
+                    </tr>
+                    <tr>
+                        <th>GitHub</th>
+                        <td>{{ $profile->github ?: '-' }}</td>
+                    </tr>
+                    <tr>
+                        <th>LinkedIn</th>
+                        <td>{{ $profile->linkedin ?: '-' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Instagram</th>
+                        <td>{{ $profile->instagram ?: '-' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <aside class="profile-preview-panel">
+            <h4>Profile Photo</h4>
+            <div class="profile-preview-frame {{ $profile->photo ? 'has-image' : '' }}">
+                <span>Belum ada foto profile</span>
+                <img src="{{ $profile->photo ? asset($profile->photo) : '' }}" alt="{{ $profile->name }} photo">
+            </div>
+            @if($profile->photo)
+                <p class="card-subtitle" style="margin-top: 0.75rem;">{{ $profile->photo }}</p>
+            @endif
+            @if($profile->photos->count())
+                <h4 style="margin-top: 1rem;">Gallery</h4>
+                <div class="profile-gallery-preview">
+                    @foreach($profile->photos as $photo)
+                        <img src="{{ asset($photo->path) }}" alt="Profile gallery photo">
+                    @endforeach
+                </div>
+            @endif
+        </aside>
+    </div>
+</div>
+@else
+<div class="card">
+    <div class="empty-state">
+        <p>Belum ada data profile.</p>
+        <div class="button-row" style="justify-content: center;">
+            <a href="{{ route('profile.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Add Profile</a>
+        </div>
+    </div>
+</div>
+@endif
 @endsection

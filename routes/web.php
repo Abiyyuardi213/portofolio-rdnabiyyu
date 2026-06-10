@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 // Front-end Routes
 Route::get('/', function () {
-    $profile = Profile::first();
+    $profile = Profile::with('photos')->first();
     return view('about', compact('profile'));
 });
 
@@ -70,6 +70,6 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
     Route::post('/logout', function () {
         Illuminate\Support\Facades\Auth::logout();
-        return redirect('/login');
+        return redirect('/login')->with('success', 'Logout berhasil. Sampai jumpa lagi!');
     })->name('logout');
 });

@@ -25,7 +25,9 @@
             padding: 20px;
             color: var(--mac-text);
             font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background: var(--mac-bg);
+            background:
+                linear-gradient(rgba(245, 245, 247, 0.18), rgba(245, 245, 247, 0.3)),
+                url("{{ asset('image/w1.jpg') }}") center / cover no-repeat fixed;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -116,9 +118,43 @@
             font-weight: 600;
         }
         .back-link:hover { color: var(--mac-text); }
+        .toast {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 20;
+            min-width: min(340px, calc(100vw - 48px));
+            max-width: 420px;
+            padding: 12px 14px;
+            border: 1px solid #cdebd5;
+            border-radius: 10px;
+            background: #ffffff;
+            color: #1c7c35;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            font-size: 13px;
+            animation: toast-in 0.22s ease-out, toast-out 0.24s ease-in 4.2s forwards;
+        }
+        .toast i { color: #248a3d; }
+        @keyframes toast-in {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes toast-out {
+            to { opacity: 0; transform: translateY(-8px); pointer-events: none; }
+        }
     </style>
 </head>
 <body>
+    @if(session('success'))
+        <div class="toast" role="status" aria-live="polite">
+            <i class="fas fa-check-circle"></i>
+            {{ session('success') }}
+        </div>
+    @endif
+
     <div class="login-window">
         <div class="titlebar" aria-hidden="true">
             <span class="traffic-light red"></span>

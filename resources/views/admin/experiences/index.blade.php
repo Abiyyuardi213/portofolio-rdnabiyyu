@@ -37,6 +37,7 @@
                     <td>{{ $exp->period }}</td>
                     <td>
                         <div class="table-actions">
+                            <a href="{{ route('experiences.show', $exp->id) }}" class="btn btn-outline btn-icon" title="Detail"><i class="fas fa-eye"></i></a>
                             <a href="{{ route('experiences.edit', $exp->id) }}" class="btn btn-outline btn-icon" title="Edit"><i class="fas fa-pen"></i></a>
                             <form action="{{ route('experiences.destroy', $exp->id) }}" method="POST" onsubmit="return confirm('Delete this experience?')">
                                 @csrf
