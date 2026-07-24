@@ -19,6 +19,10 @@ Route::get('/', function () {
     return view('about', compact('profile'));
 });
 
+Route::get('/download-cv', function () {
+    return view('cv');
+});
+
 Route::get('/experience', function () {
     $experiences = Experience::all();
     return view('experience', compact('experiences'));

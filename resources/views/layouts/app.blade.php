@@ -9,7 +9,8 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --page: #f0f0ef;
+            --page: #ffffff;
+            --container-padding: 48px;
             --paper: #ffffff;
             --ink: #111111;
             --muted: #6f6f6f;
@@ -36,17 +37,14 @@
             position: fixed;
             inset: 0;
             pointer-events: none;
-            background-image: radial-gradient(rgba(17,17,17,0.08) 0.8px, transparent 0.8px);
-            background-size: 14px 14px;
+            background-image: radial-gradient(rgba(17,17,17,0.05) 0.8px, transparent 0.8px);
+            background-size: 20px 20px;
             opacity: 0.5;
         }
         a { color: inherit; }
         main {
-            width: min(1380px, 100%);
-            margin: 0 auto;
+            width: 100%;
             background: rgba(255,255,255,0.96);
-            border-left: 1px solid var(--line);
-            border-right: 1px solid var(--line);
             position: relative;
             z-index: 1;
         }
@@ -54,20 +52,18 @@
         nav {
             position: sticky;
             top: 0;
-            width: min(1380px, 100%);
-            margin: 0 auto;
+            width: 100%;
             z-index: 20;
             background: rgba(255,255,255,0.9);
             backdrop-filter: blur(18px);
-            border: 1px solid var(--line);
-            border-bottom: 0;
+            border-bottom: 1px solid var(--line);
         }
         .nav-container {
             height: 72px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 32px;
+            padding: 0 var(--container-padding);
         }
         .nav-brand {
             display: inline-flex;
@@ -152,10 +148,10 @@
         .grid-section {
             border-top: 1px solid var(--line);
             background:
-                linear-gradient(var(--line) 1px, transparent 1px),
-                linear-gradient(90deg, var(--line) 1px, transparent 1px),
+                linear-gradient(rgba(17,17,17,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(17,17,17,0.03) 1px, transparent 1px),
                 #fff;
-            background-size: 25% 100%, 100% 25%, auto;
+            background-size: 40px 40px;
         }
         .hero-grid {
             min-height: 560px;
@@ -174,7 +170,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding-left: clamp(48px, 8vw, 84px);
+            padding-left: var(--container-padding);
             background: #fff;
         }
         .hero-visual {
@@ -187,6 +183,7 @@
                 radial-gradient(circle, rgba(17,17,17,0.09) 1px, transparent 1.2px),
                 #fff;
             background-size: 12px 12px, auto;
+            padding-right: var(--container-padding);
         }
         .hero-visual::before,
         .hero-visual::after {
@@ -258,13 +255,12 @@
             margin-top: 32px;
             flex-wrap: wrap;
         }
-        .btn-gradient {
+        .btn-gradient,
+        .btn-dark {
             min-height: 44px;
             padding: 0 28px;
             border-radius: 8px;
             border: 0;
-            background: var(--gradient);
-            color: #fff;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -273,6 +269,35 @@
             font-size: 14px;
             font-weight: 800;
             cursor: pointer;
+        }
+        .btn-gradient {
+            background: var(--gradient);
+            color: #fff;
+        }
+        .btn-dark {
+            background: var(--black);
+            color: #fff;
+        }
+        .btn-outline {
+            min-height: 44px;
+            padding: 0 28px;
+            border-radius: 8px;
+            border: 1px solid var(--line-strong);
+            background: #ffffff;
+            color: var(--ink);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .btn-outline:hover {
+            background: #f5f5f1;
+            border-color: var(--ink);
         }
         .hero-photo {
             width: min(430px, 72%);
@@ -391,9 +416,9 @@
             grid-template-columns: 0.92fr 1.08fr;
             border-top: 1px solid var(--line);
             background:
-                radial-gradient(circle, rgba(17,17,17,0.075) 1px, transparent 1.2px),
+                radial-gradient(circle, rgba(17,17,17,0.05) 0.8px, transparent 0.8px),
                 #fff;
-            background-size: 12px 12px, auto;
+            background-size: 20px 20px;
         }
         .split-title,
         .split-content {
@@ -402,11 +427,13 @@
         .split-title {
             border-right: 1px solid var(--line);
             background: rgba(255,255,255,0.74);
+            padding-left: var(--container-padding);
         }
         .split-content {
             display: flex;
             align-items: center;
             background: rgba(255,255,255,0.38);
+            padding-right: var(--container-padding);
         }
         .split-title h2,
         .page-heading h1 {
@@ -478,14 +505,13 @@
         }
 
         .page-shell {
-            padding: clamp(46px, 7vw, 88px);
+            padding: clamp(46px, 7vw, 88px) var(--container-padding);
             border-top: 1px solid var(--line);
             background:
-                radial-gradient(circle, rgba(17,17,17,0.055) 1px, transparent 1.2px),
-                linear-gradient(rgba(231,231,228,0.72) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(231,231,228,0.72) 1px, transparent 1px),
+                linear-gradient(rgba(17,17,17,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(17,17,17,0.03) 1px, transparent 1px),
                 #fff;
-            background-size: 16px 16px, 25% 180px, 25% 180px, auto;
+            background-size: 40px 40px;
         }
         .page-heading {
             display: grid;
@@ -705,10 +731,8 @@
         .hero-summary a { color: var(--ink); font-weight: 800; }
 
         .site-footer {
-            width: min(1380px, 100%);
-            margin: 0 auto;
-            border: 1px solid var(--line);
-            border-top: 0;
+            width: 100%;
+            border-top: 1px solid var(--line);
             background:
                 radial-gradient(circle, rgba(17,17,17,0.075) 1px, transparent 1.2px),
                 rgba(255,255,255,0.96);
@@ -722,7 +746,7 @@
             display: grid;
             grid-template-columns: 1.05fr 1.4fr 0.9fr;
             gap: 28px;
-            padding: 34px clamp(24px, 6vw, 72px);
+            padding: 34px var(--container-padding);
             border-bottom: 1px solid var(--line);
             background: rgba(255,255,255,0.76);
         }
@@ -773,7 +797,7 @@
             align-items: center;
             justify-content: space-between;
             gap: 16px;
-            padding: 18px clamp(24px, 6vw, 72px);
+            padding: 18px var(--container-padding);
             background: rgba(255,255,255,0.88);
         }
 
@@ -781,6 +805,24 @@
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(24px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (min-width: 1380px) {
+            :root {
+                --container-padding: calc((100vw - 1380px) / 2 + 48px);
+            }
+            .metric-strip {
+                padding-left: calc((100vw - 1380px) / 2);
+                padding-right: calc((100vw - 1380px) / 2);
+            }
+            .metric {
+                padding-left: 48px;
+                padding-right: 48px;
+            }
+            .hero-location,
+            .floating-note.right {
+                right: var(--container-padding) !important;
+            }
         }
 
         @media (max-width: 900px) {

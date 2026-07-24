@@ -15,6 +15,7 @@
             <li><a href="{{ url('/education') }}" class="nav-link {{ Request::is('education') ? 'active' : '' }}">Education</a></li>
         </ul>
         <div class="nav-actions">
+            <a href="{{ url('/download-cv') }}" target="_blank" class="nav-link" style="margin-right: 6px;"><i class="fas fa-file-pdf"></i> CV ATS</a>
             <a href="{{ url('/portfolio') }}" class="nav-icon" aria-label="Portfolio"><i class="fas fa-briefcase"></i></a>
             <a href="{{ url('/education') }}" class="nav-link">Pages <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 5px;"></i></a>
             <a href="{{ url('/#contact') }}" class="nav-cta">Hire Me!</a>

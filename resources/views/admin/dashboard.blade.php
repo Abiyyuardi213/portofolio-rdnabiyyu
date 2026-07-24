@@ -55,8 +55,8 @@
             <svg viewBox="0 0 760 260" role="img" aria-label="Portfolio activity chart">
                 <defs>
                     <linearGradient id="activityFill" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0%" stop-color="#007aff" stop-opacity="0.22" />
-                        <stop offset="100%" stop-color="#007aff" stop-opacity="0" />
+                        <stop offset="0%" stop-color="#ff405f" stop-opacity="0.22" />
+                        <stop offset="100%" stop-color="#ff405f" stop-opacity="0" />
                     </linearGradient>
                 </defs>
                 <g stroke="#e5e5ea" stroke-width="1">
@@ -67,12 +67,12 @@
                     <line x1="0" y1="236" x2="760" y2="236" />
                 </g>
                 <path d="M0 220 C50 196 82 204 116 170 S184 112 232 128 S304 194 350 150 S420 62 476 88 S548 212 602 132 S684 84 760 104 L760 260 L0 260 Z" fill="url(#activityFill)" />
-                <path d="M0 220 C50 196 82 204 116 170 S184 112 232 128 S304 194 350 150 S420 62 476 88 S548 212 602 132 S684 84 760 104" fill="none" stroke="#007aff" stroke-width="3" stroke-linecap="round" />
-                <circle cx="476" cy="88" r="5" fill="#007aff" />
+                <path d="M0 220 C50 196 82 204 116 170 S184 112 232 128 S304 194 350 150 S420 62 476 88 S548 212 602 132 S684 84 760 104" fill="none" stroke="#ff405f" stroke-width="3" stroke-linecap="round" />
+                <circle cx="476" cy="88" r="5" fill="#ff405f" />
                 <line x1="476" y1="24" x2="476" y2="236" stroke="#8e8e93" stroke-dasharray="5 5" />
                 <rect x="492" y="56" width="142" height="72" rx="10" fill="#fff" stroke="#d8d8dc" />
                 <text x="508" y="82" font-size="12" fill="#6e6e73">Current content</text>
-                <text x="508" y="108" font-size="21" font-weight="700" fill="#1d1d1f">{{ array_sum($stats) }} records</text>
+                <text x="508" y="108" font-size="21" font-weight="700" fill="var(--ink)">{{ array_sum($stats) }} records</text>
             </svg>
         </div>
     </div>

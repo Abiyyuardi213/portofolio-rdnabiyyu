@@ -35,6 +35,7 @@
                     <td>{{ $project->tags ?: '-' }}</td>
                     <td>
                         <div class="table-actions">
+                            <a href="{{ route('projects.show', $project->id) }}" class="btn btn-outline btn-icon" title="Detail"><i class="fas fa-eye"></i></a>
                             <a href="{{ route('projects.edit', $project->id) }}" class="btn btn-outline btn-icon" title="Edit"><i class="fas fa-pen"></i></a>
                             <form action="{{ route('projects.destroy', $project->id) }}" method="POST" onsubmit="return confirm('Delete this project?')">
                                 @csrf

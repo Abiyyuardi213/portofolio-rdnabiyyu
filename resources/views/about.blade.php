@@ -26,6 +26,7 @@
             <div class="hero-actions">
                 <a href="#contact" class="btn-gradient">Hire Me!</a>
                 <a href="{{ url('/portfolio') }}" class="btn-dark">See My Portfolio</a>
+                <a href="{{ url('/download-cv') }}" target="_blank" class="btn-outline"><i class="fas fa-file-pdf"></i> CV ATS</a>
             </div>
         </div>
         <div class="hero-visual">
