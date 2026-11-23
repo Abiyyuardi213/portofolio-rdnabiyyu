@@ -31,6 +31,8 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
+Route::post('/api/ai-chat', [App\Http\Controllers\AiAssistantController::class, 'ask'])->name('ai.chat');
+
 Route::get('/download-cv', function () {
     return view('cv');
 });

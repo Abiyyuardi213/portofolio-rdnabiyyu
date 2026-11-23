@@ -38,6 +38,9 @@
     {{-- Footer --}}
     @include('components.public.footer')
 
+    {{-- Floating AI Assistant Widget Button --}}
+    @include('components.public.ai-chat-button')
+
     @yield('scripts')
 </body>
 </html>
