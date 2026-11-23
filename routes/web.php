@@ -16,8 +16,20 @@ use Illuminate\Support\Facades\Route;
 // Front-end Routes
 Route::get('/', function () {
     $profile = Profile::with('photos')->first();
-    return view('about', compact('profile'));
+    $projects = Project::all();
+    $experiences = Experience::all();
+    $stats = [
+        'projects' => Project::count(),
+        'experiences' => Experience::count(),
+        'skills' => Skill::count(),
+        'education' => Education::count(),
+    ];
+    return view('about', compact('profile', 'projects', 'experiences', 'stats'));
 });
+
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
 
 Route::get('/download-cv', function () {
     return view('cv');

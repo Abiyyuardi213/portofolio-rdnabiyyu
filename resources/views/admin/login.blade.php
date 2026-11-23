@@ -3,190 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Admin - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;750&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <title>Login Admin - Abiyyu Dev</title>
+    
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --mac-bg: #f5f5f7;
-            --mac-window: #ffffff;
-            --mac-border: #dedee3;
-            --mac-text: #1d1d1f;
-            --mac-muted: #6e6e73;
-            --mac-blue: #007aff;
-            --mac-red: #ff453a;
+            --brand-blue: #2563eb;
+            --brand-blue-hover: #1d4ed8;
+            --brand-dark: #0f172a;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
         }
 
         body {
             min-height: 100vh;
             display: grid;
             place-items: center;
-            padding: 20px;
-            color: var(--mac-text);
-            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background:
-                linear-gradient(rgba(245, 245, 247, 0.18), rgba(245, 245, 247, 0.3)),
-                url("{{ asset('image/w1.jpg') }}") center / cover no-repeat fixed;
+            padding: 24px;
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafc;
             -webkit-font-smoothing: antialiased;
         }
 
         .login-window {
-            width: min(420px, 100%);
+            width: min(440px, 100%);
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
             overflow: hidden;
-            border: 1px solid var(--mac-border);
-            border-radius: 12px;
-            background: var(--mac-window);
-            box-shadow: 0 8px 26px rgba(0,0,0,0.08);
         }
 
-        .titlebar {
-            height: 42px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 0 16px;
-            border-bottom: 1px solid var(--mac-border);
-            background: rgba(250,250,251,0.88);
+        .login-header {
+            text-align: center;
+            padding: 36px 32px 20px;
         }
 
-        .traffic-light { width: 12px; height: 12px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08); }
-        .red { background: #ff5f57; }
-        .yellow { background: #febc2e; }
-        .green { background: #28c840; }
-
-        .login-content { padding: 30px; }
-        .login-header { text-align: center; margin-bottom: 28px; }
         .login-logo {
-            width: 58px;
-            height: 58px;
+            width: 56px;
+            height: 56px;
             margin: 0 auto 16px;
             border-radius: 14px;
             display: grid;
             place-items: center;
             color: #fff;
-            font-size: 22px;
-            background: var(--mac-blue);
+            font-size: 20px;
+            background: var(--brand-blue);
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
         }
-        h1 { font-size: 22px; font-weight: 750; margin-bottom: 6px; }
-        p { color: var(--mac-muted); font-size: 13px; }
-        .form-group { margin-bottom: 14px; }
-        label { display: block; margin-bottom: 6px; color: #3a3a3c; font-size: 12px; font-weight: 700; }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--brand-dark);
+            letter-spacing: -0.02em;
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-top: 6px;
+            line-height: 1.5;
+        }
+
+        .login-content {
+            padding: 0 32px 36px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            color: var(--brand-dark);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
         input {
             width: 100%;
-            padding: 9px 10px;
-            border: 1px solid #c7c7cc;
-            border-radius: 7px;
+            padding: 11px 14px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
             background: #ffffff;
-            color: var(--mac-text);
+            color: var(--text-main);
             font-family: inherit;
-            font-size: 13px;
-            transition: border-color 0.16s, box-shadow 0.16s, background 0.16s;
+            font-size: 14px;
+            transition: all 0.2s ease;
         }
+
         input:focus {
             outline: none;
-            border-color: var(--mac-blue);
-            background: #fff;
-            box-shadow: 0 0 0 3px rgba(0,122,255,0.18);
+            border-color: var(--brand-blue);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
         }
+
         .btn {
             width: 100%;
-            min-height: 34px;
-            margin-top: 8px;
-            border: 1px solid #006ee6;
-            border-radius: 7px;
-            background: var(--mac-blue);
+            padding: 12px;
+            margin-top: 10px;
+            border: 0;
+            border-radius: 10px;
+            background: var(--brand-blue);
             color: #fff;
             cursor: pointer;
             font-family: inherit;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 700;
-            box-shadow: none;
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.25);
+            transition: background 0.2s ease;
         }
-        .btn:hover { background: #0066d6; }
-        .error-message { color: var(--mac-red); font-size: 12px; margin: 8px 0 0; }
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            justify-content: center;
-            width: 100%;
-            margin-top: 18px;
-            color: var(--mac-muted);
-            text-decoration: none;
+
+        .btn:hover {
+            background: var(--brand-blue-hover);
+        }
+
+        .error-box {
+            padding: 12px 14px;
+            margin-bottom: 18px;
+            border-radius: 10px;
+            background: #fef2f2;
+            border: 1px solid #fee2e2;
+            color: #b91c1c;
             font-size: 13px;
             font-weight: 600;
         }
-        .back-link:hover { color: var(--mac-text); }
-        .toast {
-            position: fixed;
-            top: 24px;
-            right: 24px;
-            z-index: 20;
-            min-width: min(340px, calc(100vw - 48px));
-            max-width: 420px;
-            padding: 12px 14px;
-            border: 1px solid #cdebd5;
-            border-radius: 10px;
-            background: #ffffff;
-            color: #1c7c35;
-            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
-            display: flex;
-            align-items: center;
-            gap: 9px;
-            font-size: 13px;
-            animation: toast-in 0.22s ease-out, toast-out 0.24s ease-in 4.2s forwards;
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
         }
-        .toast i { color: #248a3d; }
-        @keyframes toast-in {
-            from { opacity: 0; transform: translateY(-8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes toast-out {
-            to { opacity: 0; transform: translateY(-8px); pointer-events: none; }
+
+        .back-link:hover {
+            color: var(--brand-blue);
         }
     </style>
 </head>
 <body>
-    @if(session('success'))
-        <div class="toast" role="status" aria-live="polite">
-            <i class="fas fa-check-circle"></i>
-            {{ session('success') }}
-        </div>
-    @endif
 
-    <div class="login-window">
-        <div class="titlebar" aria-hidden="true">
-            <span class="traffic-light red"></span>
-            <span class="traffic-light yellow"></span>
-            <span class="traffic-light green"></span>
+<div class="login-window">
+    <div class="login-header">
+        <div class="login-logo">
+            <i class="fas fa-terminal"></i>
         </div>
-        <div class="login-content">
-            <div class="login-header">
-                <div class="login-logo"><i class="fas fa-terminal"></i></div>
-                <h1>Portfolio Admin</h1>
-                <p>Login to manage your portfolio workspace</p>
+        <h1>Portal Masuk Admin</h1>
+        <p>Autentikasi aman untuk mengelola data portofolio</p>
+    </div>
+
+    <div class="login-content">
+        @if ($errors->any())
+            <div class="error-box">
+                {{ $errors->first() }}
+            </div>
+        @endif
+
+        <form action="{{ route('login') }}" method="POST">
+            @csrf
+            <div class="form-group">
+                <label for="email">Alamat Email</label>
+                <input type="email" id="email" name="email" value="{{ old('email') }}" required autofocus placeholder="admin@example.com">
             </div>
 
-            <form action="{{ url('/login') }}" method="POST">
-                @csrf
-                <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" name="email" placeholder="you@example.com" value="{{ old('email') }}" required autofocus>
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" name="password" placeholder="Password" required>
-                </div>
+            <div class="form-group">
+                <label for="password">Kata Sandi</label>
+                <input type="password" id="password" name="password" required placeholder="••••••••">
+            </div>
 
-                @if($errors->has('email'))
-                    <p class="error-message">{{ $errors->first('email') }}</p>
-                @endif
+            <button type="submit" class="btn">
+                <i class="fas fa-right-to-bracket" style="margin-right: 6px;"></i> Masuk ke Dashboard
+            </button>
+        </form>
 
-                <button type="submit" class="btn"><i class="fas fa-lock-open"></i> Sign In</button>
-            </form>
-            <a href="{{ url('/') }}" class="back-link"><i class="fas fa-arrow-left"></i> Back to public site</a>
-        </div>
+        <a href="{{ url('/') }}" class="back-link">
+            <i class="fas fa-arrow-left" style="margin-right: 4px;"></i> Kembali ke Beranda
+        </a>
     </div>
+</div>
+
 </body>
 </html>

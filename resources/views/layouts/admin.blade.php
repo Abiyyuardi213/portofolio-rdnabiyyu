@@ -4,29 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('header', 'Admin') - Abiyyu Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;750&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --page: #ffffff;
-            --container-padding: 48px;
+            --container-padding: 40px;
             --paper: #ffffff;
-            --ink: #111111;
-            --muted: #6f6f6f;
-            --line: #e7e7e4;
-            --line-strong: #d9d9d4;
-            --yellow: #f4ff00;
-            --black: #111111;
-            --gradient: linear-gradient(90deg, #df21d9 0%, #ff405f 48%, #ffbd13 100%);
-            --shadow: 0 24px 60px rgba(17, 17, 17, 0.12);
+            --ink: #0f172a;
+            --muted: #64748b;
+            --line: #e2e8f0;
+            --line-strong: #cbd5e1;
+            --brand-blue: #2563eb;
+            --brand-blue-hover: #1d4ed8;
+            --brand-dark: #1e3a8a;
+            --brand-light: #eff6ff;
+            --black: #0f172a;
+            --shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
         }
         html { scroll-behavior: smooth; }
         body {
             min-height: 100vh;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             color: var(--ink);
-            background: #ffffff;
+            background: #f8fafc;
             line-height: 1.5;
             display: flex;
             flex-direction: column;
@@ -117,8 +121,9 @@
         }
         .sidebar-link.active {
             opacity: 1;
-            background: var(--black);
+            background: var(--brand-blue);
             color: #ffffff;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
         }
         .sidebar-link i {
             width: 16px;
@@ -339,10 +344,11 @@
         .btn-primary {
             color: #fff;
             border: 0;
-            background: var(--black);
+            background: var(--brand-blue);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
         }
         .btn-primary:hover {
-            background: #333333;
+            background: var(--brand-blue-hover);
         }
         .btn-outline {
             color: var(--ink);
@@ -475,9 +481,9 @@
         }
         input:focus, textarea:focus, select:focus {
             outline: none;
-            border-color: var(--black);
+            border-color: var(--brand-blue);
             background: #fff;
-            box-shadow: 0 0 0 4px rgba(244,255,0,0.36);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
         }
 
         .text-editor {

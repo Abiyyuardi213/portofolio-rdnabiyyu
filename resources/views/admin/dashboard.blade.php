@@ -3,94 +3,113 @@
 @section('header', 'Dashboard Overview')
 
 @section('content')
-<div class="section-header">
+<div class="section-header" style="margin-bottom: 32px;">
     <div>
-        <h1>Welcome back, {{ Auth::user()->name ?? 'Admin' }}</h1>
-        <p>Kelola data portfolio dari satu workspace yang ringkas.</p>
+        <h1 style="font-weight: 800; color: var(--ink); tracking-tight;">Selamat Datang, {{ Auth::user()->name ?? 'Admin' }}</h1>
+        <p style="color: var(--muted); font-size: 14px; margin-top: 4px;">Kelola dan perbarui seluruh konten portofolio digital Anda dari panel kontrol terpadu.</p>
     </div>
-    <a href="{{ url('/') }}" target="_blank" class="btn btn-outline"><i class="fas fa-arrow-up-right-from-square"></i> Preview Site</a>
+    <a href="{{ url('/') }}" target="_blank" class="btn btn-outline" style="border-radius: 8px; font-weight: 700;">
+        <i class="fas fa-arrow-up-right-from-square text-xs text-blue-600"></i> Lihat Website
+    </a>
 </div>
 
-<div class="stats-grid">
-    <div class="card stat-card">
-        <div class="card-header">
-            <p class="stat-label">Experiences</p>
-            <i class="fas fa-briefcase stat-icon"></i>
+{{-- Metric Counters (Gaya Kartu Merbabudev) --}}
+<div class="stats-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 32px;">
+    
+    <div class="card stat-card" style="border-radius: 16px; border: 1px solid var(--line); padding: 24px; background: #fff; box-shadow: var(--shadow);">
+        <div class="card-header" style="border-bottom: 0; padding-bottom: 0; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+            <p class="stat-label" style="font-size: 11px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em;">Pengalaman Kerja</p>
+            <div style="width: 32px; height: 32px; border-radius: 8px; background: #eff6ff; color: #2563eb; display: flex; align-items: center; justify-content: center; font-size: 13px;">
+                <i class="fas fa-briefcase"></i>
+            </div>
         </div>
-        <div class="stat-value">{{ $stats['experiences'] }}</div>
+        <div class="stat-value" style="font-size: 2.25rem; font-weight: 800; color: var(--ink);">{{ $stats['experiences'] }}</div>
     </div>
-    <div class="card stat-card">
-        <div class="card-header">
-            <p class="stat-label">Projects</p>
-            <i class="fas fa-folder-open stat-icon"></i>
+
+    <div class="card stat-card" style="border-radius: 16px; border: 1px solid var(--line); padding: 24px; background: #fff; box-shadow: var(--shadow);">
+        <div class="card-header" style="border-bottom: 0; padding-bottom: 0; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+            <p class="stat-label" style="font-size: 11px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em;">Project Showcase</p>
+            <div style="width: 32px; height: 32px; border-radius: 8px; background: #eff6ff; color: #2563eb; display: flex; align-items: center; justify-content: center; font-size: 13px;">
+                <i class="fas fa-folder-open"></i>
+            </div>
         </div>
-        <div class="stat-value">{{ $stats['projects'] }}</div>
+        <div class="stat-value" style="font-size: 2.25rem; font-weight: 800; color: var(--ink);">{{ $stats['projects'] }}</div>
     </div>
-    <div class="card stat-card">
-        <div class="card-header">
-            <p class="stat-label">Skills</p>
-            <i class="fas fa-wand-magic-sparkles stat-icon"></i>
+
+    <div class="card stat-card" style="border-radius: 16px; border: 1px solid var(--line); padding: 24px; background: #fff; box-shadow: var(--shadow);">
+        <div class="card-header" style="border-bottom: 0; padding-bottom: 0; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+            <p class="stat-label" style="font-size: 11px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em;">Keahlian Teknis</p>
+            <div style="width: 32px; height: 32px; border-radius: 8px; background: #eff6ff; color: #2563eb; display: flex; align-items: center; justify-content: center; font-size: 13px;">
+                <i class="fas fa-wand-magic-sparkles"></i>
+            </div>
         </div>
-        <div class="stat-value">{{ $stats['skills'] }}</div>
+        <div class="stat-value" style="font-size: 2.25rem; font-weight: 800; color: var(--ink);">{{ $stats['skills'] }}</div>
     </div>
-    <div class="card stat-card">
-        <div class="card-header">
-            <p class="stat-label">Education</p>
-            <i class="fas fa-graduation-cap stat-icon"></i>
+
+    <div class="card stat-card" style="border-radius: 16px; border: 1px solid var(--line); padding: 24px; background: #fff; box-shadow: var(--shadow);">
+        <div class="card-header" style="border-bottom: 0; padding-bottom: 0; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+            <p class="stat-label" style="font-size: 11px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em;">Riwayat Studi</p>
+            <div style="width: 32px; height: 32px; border-radius: 8px; background: #eff6ff; color: #2563eb; display: flex; align-items: center; justify-content: center; font-size: 13px;">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
         </div>
-        <div class="stat-value">{{ $stats['education'] }}</div>
+        <div class="stat-value" style="font-size: 2.25rem; font-weight: 800; color: var(--ink);">{{ $stats['education'] }}</div>
     </div>
+
 </div>
 
-<div class="dashboard-grid">
-    <div class="card">
-        <div class="card-header">
-            <div>
-                <h3>Portfolio Activity</h3>
-                <p class="card-subtitle">Ringkasan konten aktif di dashboard.</p>
+<div class="dashboard-grid" style="display: grid; grid-template-columns: 1.35fr 0.65fr; gap: 20px;">
+    
+    {{-- Terminal Status Box (Sama seperti Merbabudev Terminal) --}}
+    <div class="card" style="background: #0f172a; border-radius: 16px; border: 1px solid #1e293b; padding: 28px; color: #fff;">
+        <div class="card-header" style="border-bottom: 1px solid #1e293b; padding-bottom: 14px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; items-center; gap: 8px;">
+                <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #ef4444;"></span>
+                <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #f59e0b;"></span>
+                <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #10b981;"></span>
+                <span style="margin-left: 8px; font-family: monospace; font-size: 12px; color: #94a3b8;">admin@merbabudev-engine:~$</span>
             </div>
-            <span class="tag-pill">30 days</span>
+            <span class="tag-pill" style="background: rgba(37,99,235,0.2); border: 1px solid rgba(37,99,235,0.4); color: #60a5fa; font-size: 11px;">System Active</span>
         </div>
-        <div class="chart-preview">
-            <svg viewBox="0 0 760 260" role="img" aria-label="Portfolio activity chart">
-                <defs>
-                    <linearGradient id="activityFill" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0%" stop-color="#ff405f" stop-opacity="0.22" />
-                        <stop offset="100%" stop-color="#ff405f" stop-opacity="0" />
-                    </linearGradient>
-                </defs>
-                <g stroke="#e5e5ea" stroke-width="1">
-                    <line x1="0" y1="44" x2="760" y2="44" />
-                    <line x1="0" y1="92" x2="760" y2="92" />
-                    <line x1="0" y1="140" x2="760" y2="140" />
-                    <line x1="0" y1="188" x2="760" y2="188" />
-                    <line x1="0" y1="236" x2="760" y2="236" />
-                </g>
-                <path d="M0 220 C50 196 82 204 116 170 S184 112 232 128 S304 194 350 150 S420 62 476 88 S548 212 602 132 S684 84 760 104 L760 260 L0 260 Z" fill="url(#activityFill)" />
-                <path d="M0 220 C50 196 82 204 116 170 S184 112 232 128 S304 194 350 150 S420 62 476 88 S548 212 602 132 S684 84 760 104" fill="none" stroke="#ff405f" stroke-width="3" stroke-linecap="round" />
-                <circle cx="476" cy="88" r="5" fill="#ff405f" />
-                <line x1="476" y1="24" x2="476" y2="236" stroke="#8e8e93" stroke-dasharray="5 5" />
-                <rect x="492" y="56" width="142" height="72" rx="10" fill="#fff" stroke="#d8d8dc" />
-                <text x="508" y="82" font-size="12" fill="#6e6e73">Current content</text>
-                <text x="508" y="108" font-size="21" font-weight="700" fill="var(--ink)">{{ array_sum($stats) }} records</text>
-            </svg>
+
+        <div style="font-family: monospace; font-size: 13px; line-height: 1.8; color: #cbd5e1;">
+            <p><span style="color: #34d399;">➜</span> <span style="color: #60a5fa;">portfolio:status</span> --all</p>
+            <p style="color: #94a3b8; margin-top: 4px;">• Framework: Laravel 11.x &amp; Tailwind CSS v4</p>
+            <p style="color: #94a3b8;">• Database: MySQL Active Connection</p>
+            <p style="color: #94a3b8;">• Total Master Records: <span style="color: #38bdf8; font-weight: bold;">{{ array_sum($stats) }} items</span></p>
+            <p style="color: #94a3b8;">• Public Status: <span style="color: #34d399;">200 OK — Ready for Production</span></p>
+        </div>
+
+        <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #64748b;">
+            <span>Environment: Production Mode</span>
+            <span style="color: #94a3b8;">Surabaya, Indonesia</span>
         </div>
     </div>
 
-    <div class="card">
-        <div class="card-header">
-            <div>
-                <h3>Quick Actions</h3>
-                <p class="card-subtitle">Tambah atau ubah data utama.</p>
-            </div>
+    {{-- Quick Action Links --}}
+    <div class="card" style="border-radius: 16px; border: 1px solid var(--line); padding: 28px; background: #fff; box-shadow: var(--shadow);">
+        <div class="card-header" style="border-bottom: 1px solid var(--line); padding-bottom: 14px; margin-bottom: 20px;">
+            <h3 style="font-size: 16px; font-weight: 800; color: var(--ink);">Aksi Cepat</h3>
+            <p class="card-subtitle" style="font-size: 12px; color: var(--muted); margin-top: 2px;">Tambah atau kelola entri konten secara langsung.</p>
         </div>
-        <div class="quick-actions">
-            <a href="{{ route('projects.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Add Project</a>
-            <a href="{{ route('experiences.create') }}" class="btn btn-outline"><i class="fas fa-plus"></i> Add Experience</a>
-            <a href="{{ route('skills.create') }}" class="btn btn-outline"><i class="fas fa-plus"></i> Add Skill</a>
-            <a href="{{ route('education.create') }}" class="btn btn-outline"><i class="fas fa-plus"></i> Add Education</a>
-            <a href="{{ route('profile.index') }}" class="btn btn-outline"><i class="fas fa-pen"></i> Edit Profile</a>
+        <div class="quick-actions" style="display: flex; flex-direction: column; gap: 10px;">
+            <a href="{{ route('projects.create') }}" class="btn btn-primary" style="justify-content: flex-start; padding: 12px 16px; border-radius: 8px;">
+                <i class="fas fa-plus"></i> Tambah Project Baru
+            </a>
+            <a href="{{ route('experiences.create') }}" class="btn btn-outline" style="justify-content: flex-start; padding: 12px 16px; border-radius: 8px;">
+                <i class="fas fa-plus text-blue-600"></i> Tambah Pengalaman Kerja
+            </a>
+            <a href="{{ route('skills.create') }}" class="btn btn-outline" style="justify-content: flex-start; padding: 12px 16px; border-radius: 8px;">
+                <i class="fas fa-plus text-blue-600"></i> Tambah Skill Teknis
+            </a>
+            <a href="{{ route('education.create') }}" class="btn btn-outline" style="justify-content: flex-start; padding: 12px 16px; border-radius: 8px;">
+                <i class="fas fa-plus text-blue-600"></i> Tambah Data Pendidikan
+            </a>
+            <a href="{{ route('profile.index') }}" class="btn btn-outline" style="justify-content: flex-start; padding: 12px 16px; border-radius: 8px;">
+                <i class="fas fa-user-pen text-blue-600"></i> Edit Profil &amp; Kontak
+            </a>
         </div>
     </div>
+
 </div>
 @endsection
